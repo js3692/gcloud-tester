@@ -1,0 +1,16 @@
+FROM gcr.io/google-appengine/python
+
+RUN virtualenv /env
+
+ENV VIRTUAL_ENV /env
+ENV PATH /env/bin:$PATH
+
+ADD requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
+
+ENV FLASK_APP serviceb
+ENV FLASK_ENV development
+
+EXPOSE 5000
+
+CMD flask run --host=0.0.0.0

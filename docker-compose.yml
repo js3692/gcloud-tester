@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  servicea:
+    build:
+      context: ./servicea
+      dockerfile: Dockerfile-dev
+    image: gcloud-tester-servicea
+    volumes:
+      - ./servicea/servicea:/app/servicea:ro  
+  serviceb:
+    build:
+      context: ./serviceb
+      dockerfile: Dockerfile-dev
+    image: gcloud-tester-serviceb
+    volumes:
+      - ./serviceb/serviceb:/app/serviceb:ro
